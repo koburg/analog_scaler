@@ -1,0 +1,20 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Analog Scaler Setup",
+        "description": "Configure analog scaling",
+        "data": {
+          "source": "Source Sensor",
+          "min_analog": "Min Analog",
+          "max_analog": "Max Analog",
+          "min_limit": "Min Output",
+          "max_limit": "Max Output",
+          "unit": "Unit",
+          "device_class": "Device Class",
+          "state_class": "State Class"
+        }
+      }
+    }
+  }
+}
