@@ -34,10 +34,10 @@ class AnalogScalerConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             vol.Required(CONF_SOURCE): selector.EntitySelector(
                 selector.EntitySelectorConfig(domain="sensor")
             ),
-            vol.Required(CONF_MIN_ANALOG, default=0): int,
-            vol.Required(CONF_MAX_ANALOG, default=27648): int,
-            vol.Required(CONF_MIN_LIMIT, default=0.0): float,
-            vol.Required(CONF_MAX_LIMIT, default=100.0): float,
+            vol.Required(CONF_MIN_ANALOG, default=0): vol.Coerce(int),
+            vol.Required(CONF_MAX_ANALOG, default=27648): vol.Coerce(int),
+            vol.Required(CONF_MIN_LIMIT, default=0.0): vol.Coerce(float),
+            vol.Required(CONF_MAX_LIMIT, default=100.0): vol.Coerce(float),
 
             vol.Optional(CONF_UNIT): str,
 
