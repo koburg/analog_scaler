@@ -1,0 +1,9 @@
+{
+  "domain": "analog_scaler",
+  "name": "Analog Scaler",
+  "version": "1.0.0",
+  "documentation": "https://github.com/ditbrugernavn/analog_scaler",
+  "dependencies": [],
+  "codeowners": ["@ditbrugernavn"],
+  "config_flow": true
+}
