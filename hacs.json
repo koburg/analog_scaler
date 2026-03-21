@@ -1,0 +1,6 @@
+{
+  "name": "Analog Scaler",
+  "content_in_root": false,
+  "domains": ["analog_scaler"],
+  "homeassistant": "2023.0.0"
+}
