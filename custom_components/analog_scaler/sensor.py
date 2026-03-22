@@ -106,7 +106,7 @@ class AnalogScalerSensor(SensorEntity):
     def _update_state(self):
         state = self._hass.states.get(self._source)
 
-        if not state or state.state in ("unknown", "unavailable"):
+        if not state or state.state in ("unknown", "unavailable", None):
             self._state = None
             return
 
@@ -121,8 +121,20 @@ class AnalogScalerSensor(SensorEntity):
             self._metadata_initialized = True
 
         try:
-            current = float(state.state)
+            # Robust parsing (sensor + helpers)
+            raw_value = state.state
 
+            if isinstance(raw_value, str):
+                raw_value = raw_value.replace(",", ".")  # håndter dansk decimal
+
+            current = float(raw_value)
+
+        except (ValueError, TypeError):
+            self._state = None
+            return
+
+        # Scaling
+        try:
             if (self._max_analog - self._min_analog) == 0:
                 self._state = self._min_limit
                 return
