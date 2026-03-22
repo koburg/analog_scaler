@@ -15,6 +15,10 @@
           "state_class": "State Class"
         }
       }
+    },
+    "error": {
+      "analog_range_invalid": "Min og max analog må ikke være ens",
+      "output_range_invalid": "Min og max output må ikke være ens"
     }
   }
 }
