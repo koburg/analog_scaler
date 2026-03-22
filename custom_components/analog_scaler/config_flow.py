@@ -48,7 +48,7 @@ class AnalogScalerConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
 
             vol.Required(CONF_SOURCE): selector.EntitySelector(
             selector.EntitySelectorConfig(
-            domain=["sensor", "input_number"]
+            domain=["sensor", "input_number", "number"]
                 )
             ),
 
