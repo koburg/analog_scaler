@@ -41,7 +41,7 @@ def auto_detect_metadata(source_state, user_unit, user_device_class, user_state_
             elif unit in AUTO_MAPPINGS:
                 device_class = AUTO_MAPPINGS[unit]["device_class"]
 
-        # Heuristik (% edge cases)
+        # Heuristik for %
         if unit == "%" and not user_device_class:
             if "battery" in name:
                 device_class = "battery"
@@ -68,20 +68,23 @@ class AnalogScalerSensor(SensorEntity):
         self._entry = entry
         self._state = None
 
-        self._source = entry.data[CONF_SOURCE]
-        self._min_analog = entry.data[CONF_MIN_ANALOG]
-        self._max_analog = entry.data[CONF_MAX_ANALOG]
-        self._min_limit = entry.data[CONF_MIN_LIMIT]
-        self._max_limit = entry.data[CONF_MAX_LIMIT]
+        # Kombinér data + options (så edit virker)
+        data = {**entry.data, **entry.options}
 
-        self._unit = entry.data.get(CONF_UNIT)
-        self._device_class = entry.data.get(CONF_DEVICE_CLASS)
-        self._state_class = entry.data.get(CONF_STATE_CLASS)
+        self._source = data[CONF_SOURCE]
+        self._min_analog = data[CONF_MIN_ANALOG]
+        self._max_analog = data[CONF_MAX_ANALOG]
+        self._min_limit = data[CONF_MIN_LIMIT]
+        self._max_limit = data[CONF_MAX_LIMIT]
+
+        self._unit = data.get(CONF_UNIT)
+        self._device_class = data.get(CONF_DEVICE_CLASS)
+        self._state_class = data.get(CONF_STATE_CLASS)
 
         self._metadata_initialized = False
 
-        self._attr_name = f"Scaled {self._source}"
-        self._attr_unique_id = f"{self._source}_scaled"
+        self._attr_name = entry.title
+        self._attr_unique_id = f"{entry.entry_id}_scaled"
 
     async def async_added_to_hass(self):
         @callback
@@ -97,6 +100,7 @@ class AnalogScalerSensor(SensorEntity):
             )
         )
 
+        # Første update
         self._update_state()
 
     def _update_state(self):
