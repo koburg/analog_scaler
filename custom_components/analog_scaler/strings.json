@@ -3,22 +3,37 @@
     "step": {
       "user": {
         "title": "Analog Scaler Setup",
-        "description": "Configure analog scaling",
+        "description": "Configure analog scaling\n\n{preview}",
         "data": {
+          "name": "Name",
           "source": "Source Sensor",
-          "min_analog": "Min Analog",
-          "max_analog": "Max Analog",
-          "min_limit": "Min Output",
-          "max_limit": "Max Output",
-          "unit": "Unit",
-          "device_class": "Device Class",
-          "state_class": "State Class"
+          "min_analog": "Min Analog Value",
+          "max_analog": "Max Analog Value",
+          "min_limit": "Min Output Value",
+          "max_limit": "Max Output Value",
+          "unit": "Unit (optional)",
+          "device_class": "Device Class (optional)",
+          "state_class": "State Class (optional)"
         }
       }
     },
     "error": {
       "analog_range_invalid": "Min og max analog må ikke være ens",
       "output_range_invalid": "Min og max output må ikke være ens"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Edit Analog Scaler",
+        "description": "Update scaling parameters",
+        "data": {
+          "min_analog": "Min Analog Value",
+          "max_analog": "Max Analog Value",
+          "min_limit": "Min Output Value",
+          "max_limit": "Max Output Value"
+        }
+      }
     }
   }
 }
