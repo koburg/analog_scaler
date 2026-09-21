@@ -1,7 +1,7 @@
 {
   "domain": "analog_scaler",
   "name": "Analog Scaler",
-  "version": "2026.9.2",
+  "version": "2026.9.3",
   "documentation": "https://github.com/koburg/analog_scaler",
   "dependencies": [],
   "codeowners": ["@koburg"],

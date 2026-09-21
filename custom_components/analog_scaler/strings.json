@@ -28,6 +28,7 @@
         "title": "Edit Analog Scaler",
         "description": "Update scaling parameters",
         "data": {
+          "source": "Source Sensor",
           "min_analog": "Min Analog Value",
           "max_analog": "Max Analog Value",
           "min_limit": "Min Output Value",

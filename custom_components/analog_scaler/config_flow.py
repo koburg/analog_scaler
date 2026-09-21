@@ -126,9 +126,14 @@ class AnalogScalerOptionsFlow(config_entries.OptionsFlow):
         )
 
     def _get_schema(self):
-        data = self._entry.data
+        data = {**self._entry.data, **self._entry.options}
 
         return vol.Schema({
+            vol.Required(CONF_SOURCE, default=data.get(CONF_SOURCE)): selector.EntitySelector(
+                selector.EntitySelectorConfig(
+                    domain=["sensor", "input_number", "number"]
+                )
+            ),
             vol.Optional(CONF_MIN_ANALOG, default=data.get(CONF_MIN_ANALOG)): selector.NumberSelector(
                 selector.NumberSelectorConfig(min=-100000, max=100000, step=1)
             ),
